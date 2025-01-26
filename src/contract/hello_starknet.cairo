@@ -17,9 +17,9 @@ mod HelloStarknet {
         balance::read()
     }
 
-    // Calls a function defined in outside module
-    #[view]
-    fn get_two() -> felt252 {
-        hello_starknet::business_logic::utils::returns_two()
+    fn withdraw(amount: felt252){
+        asset (balance::read() >= amount, "Balance is too low");
+        balance::write(balance::read() - amount);
     }
+
 }
